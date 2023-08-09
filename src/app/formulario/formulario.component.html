@@ -1,0 +1,187 @@
+<div id="titulo">
+  <p-card>
+    <h2>Agenda Literária 2023</h2>
+  </p-card>
+</div>
+
+<br>
+
+<form [formGroup]="formulario" autocomplete="off">
+
+  <div class="card">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-server"></i>
+      </span>
+
+      <input pInputText class="inputDeCadastro" name="titulo" formControlName="titulo" placeholder="Título" />
+    </div>
+
+    <p-divider></p-divider>
+
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-server"></i>
+      </span>
+
+      <input pInputText class="inputDeCadastro" formControlName="autor" name="autor" placeholder="Autor" />
+    </div>
+
+    <p-divider></p-divider>
+
+    <div class="leuOlivro">
+      <p>Já leu o livro?</p>
+
+      <div class="card flex justify-content-center ">
+        <p-selectButton [options]="stateOptions" optionLabel="label" optionValue="value" formControlName="flag"
+          (click)="avaliacao()">
+        </p-selectButton>
+      </div>
+    </div>
+
+    <p-divider></p-divider>
+
+    <div class="rating">
+
+      <p>Avaliação:</p>
+
+      <p-rating [cancel]="false" formControlName="rating">
+      </p-rating>
+
+    </div>
+
+    <p-divider></p-divider>
+
+    <div>
+
+      <div class="card flex justify-content-center gap-2">
+        <p-toast key="bc"></p-toast>
+        <button icon="pi pi-check" type="button" pButton pRipple (click)="showBottomCenter()" (click)="cadastrar()"
+          styleClass="p-button-rounded p-button-secondary p-button-text" class="botaoDeAcoes" pInputText
+          pTooltip="Salvar">
+        </button>
+
+        <p-button icon="pi pi-times" styleClass="p-button-danger" class="botaoDeAcoes" name="cancelar"
+          (click)="cancelar()" pInputText pTooltip="Cancelar">
+        </p-button>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<br>
+
+<div class="lidos">
+
+  <div class="card">
+    <h3>Lidos:</h3>
+    <p-table>
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="thTabela">
+            ID
+          </th>
+          <th class="thTabela">
+            Titulo
+          </th>
+          <th class="thTabela">
+            Autor
+          </th>
+          <th class="thTabela">
+            Rating
+          </th>
+          <th class="thTabela">
+
+          </th>
+        </tr>
+
+        <tr *ngFor="let item of listaDeLivrosS" class="trTabela" style="background-color: white">
+          <td>{{ item.id }}</td>
+          <td>{{ item.titulo }}</td>
+          <td>{{ item.autor }}</td>
+          <td>
+            <span class="pi pi-star-fill" style="color: rgb(166, 216, 171);"
+              *ngIf="item.rating && item.rating>0"></span>
+            <span class="pi pi-star-fill" style="color: rgb(166, 216, 171);"
+              *ngIf="item.rating && item.rating>1"></span>
+            <span class="pi pi-star-fill" style="color: rgb(166, 216, 171);"
+              *ngIf="item.rating && item.rating>2"></span>
+            <span class="pi pi-star-fill" style="color: rgb(166, 216, 171);"
+              *ngIf="item.rating && item.rating>3"></span>
+            <span class="pi pi-star-fill" style="color: rgb(166, 216, 171);"
+              *ngIf="item.rating && item.rating>4"></span>
+          </td>
+          <td>
+            <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-warning p-button-text"
+              (click)="btnAtualizar( item )" pInputText pTooltip="editar">
+            </p-button>
+
+            <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text"
+              (click)="deletar(item.id)" pInputText pTooltip="excluir">
+            </p-button>
+          </td>
+        </tr>
+
+      </ng-template>
+
+    </p-table>
+  </div>
+</div>
+
+<br><br>
+
+<div class="paraLer">
+
+  <div class="card">
+    <h3>Para ler:</h3>
+    <p-table>
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="thTabela">
+            ID
+          </th>
+          <th class="thTabela">
+            Titulo
+          </th>
+          <th class="thTabela">
+            Autor
+          </th>
+          <th class="thTabela">
+
+
+          </th>
+        </tr>
+
+        <tr *ngFor="let paraLer of listaDeLivrosN" class="trTabelaParaLer"
+          style="background-color: rgb(166, 216, 171);">
+          <td>{{ paraLer.id }}</td>
+          <td>{{ paraLer.titulo }}</td>
+          <td>{{ paraLer.autor }}</td>
+          <td>
+            <div class="card flex justify-content-center gap-2">
+
+              <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-help p-button-text"
+                (click)="btnAtualizar(paraLer)" pInputText pTooltip="editar">
+              </p-button>
+
+              <p-button icon="pi pi-trash" class="p-button-danger"
+                styleClass="p-button-rounded p-button-danger p-button-text" (click)="deletar(paraLer.id)" pInputText
+                pTooltip="excluir">
+              </p-button>
+
+            </div>
+          </td>
+        </tr>
+
+        <br>
+
+        <p-button class="btnTop" icon="pi pi-arrow-up"
+          styleClass="p-button-rounded p-button-success p-button-text p-button-raised" (click)="btnTop()"></p-button>
+
+      </ng-template>
+    </p-table>
+
+  </div>
+
+  <p-confirmDialog></p-confirmDialog>

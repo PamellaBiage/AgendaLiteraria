@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Benne&family=Dancing+Script:wght@700&family=Libre+Baskerville&family=Noto+Serif+Makasar&family=Roboto+Slab:wght@100;400&family=Ysabeau+SC:wght@1&display=swap');
+
+
+body {
+  font-family: 'Ysabeau SC', sans-serif;
+}

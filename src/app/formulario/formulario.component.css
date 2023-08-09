@@ -1,0 +1,60 @@
+.inputDeCadastro {
+  width: 30%;
+  border: 1px, solid, gray;
+  font-family: 'Ysabeau SC', sans-serif;
+  font-weight: bold;
+}
+
+.inputBusca {
+  margin-left: 65%;
+}
+
+.rating,
+.p-inputgroup,
+.leuOlivro {
+  margin-left: 1%;
+  font-family: 'Ysabeau SC', sans-serif;
+  font-weight: bold;
+}
+
+.botaoDeAcoes {
+  margin-left: 10%;
+}
+
+.lidos {
+  width: 100%;
+  font-family: 'Ysabeau SC', sans-serif;
+}
+
+.paraLer {
+  width: 100%;
+  font-family: 'Ysabeau SC', sans-serif;
+
+}
+
+h3,
+h2 {
+  text-align: center;
+  font-family: 'Ysabeau SC', sans-serif;
+  background-color: rgb(21, 157, 48);
+  color: white;
+}
+
+.trTabela,
+.thTabela {
+  font-family: 'Ysabeau SC', sans-serif;
+  font-weight: bold;
+  color: rgb(7, 166, 23);
+  border-radius: 5%;
+}
+
+.trTabelaParaLer {
+  font-family: 'Ysabeau SC', sans-serif;
+  font-weight: bold;
+  color: white;
+  border-radius: 5%;
+}
+
+.btnTop {
+  margin-left: 1000% !important;
+}
